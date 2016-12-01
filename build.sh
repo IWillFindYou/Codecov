@@ -29,7 +29,7 @@ for filename in $tests_source_list; do
   build_src_object_list=`find $build_path/src | egrep '\.o$'`
   g++ -fprofile-arcs -ftest-coverage -o ${base_filename%.*} ${base_filename%.*}.o $build_src_object_list
   # execute
-  ${base_filename%.*}
+  ./${base_filename%.*}
 done
 
 # gcov
