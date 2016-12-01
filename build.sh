@@ -27,7 +27,7 @@ for filename in $tests_source_list; do
   g++ -fprofile-arcs -ftest-coverage -I$src_path/include -g -c $filename
   # linking
   build_src_object_list=`find $build_path/src | egrep '\.o$'`
-  g++ -fprofile-arcs -ftest-coverage -o ${filename%.*} ${base_filename%.*}.o $build_src_object_list
+  g++ -fprofile-arcs -ftest-coverage -o ${base_filename%.*} ${base_filename%.*}.o $build_src_object_list
   # execute
   ${filename%.*}
 done
