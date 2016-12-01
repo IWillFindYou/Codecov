@@ -16,7 +16,7 @@ tests_source_list=`find $tests_path | egrep '\.cpp$'`
 # src build
 cd $build_path/src
 for filename in $src_source_list; do
-  g++ -fprofile-arcs -ftest-coverage -std=c++11 -I$src_path/include -g -c $filename
+  g++ -fprofile-arcs -ftest-coverage -I$src_path/include -g -c $filename
 done
 
 # tests build
@@ -24,10 +24,10 @@ cd $build_path/tests
 for filename in $tests_source_list; do
   base_filename=$(basename $filename)
   # compile
-  g++ -fprofile-arcs -ftest-coverage -std=c++11 -I$src_path/include -g -c $filename
+  g++ -fprofile-arcs -ftest-coverage -I$src_path/include -g -c $filename
   # linking
   build_src_object_list=`find $build_path/src | egrep '\.o$'`
-  g++ -fprofile-arcs -ftest-coverage -std=c++11 -o ${filename%.*} ${base_filename%.*}.o $build_src_object_list
+  g++ -fprofile-arcs -ftest-coverage -o ${filename%.*} ${base_filename%.*}.o $build_src_object_list
   # execute
   ${filename%.*}
 done
